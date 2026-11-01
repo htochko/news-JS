@@ -1,0 +1,4 @@
+node_modules/
+dist/
+webpack.config.ts
+webpack.*.config.ts
