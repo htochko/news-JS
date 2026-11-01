@@ -5,7 +5,10 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import DotenvWebpackPlugin from 'dotenv-webpack';
 import 'webpack-dev-server';
+import dotenv from 'dotenv';
+import webpack from 'webpack';
 
+dotenv.config({ path: path.resolve(import.meta.dirname, '.env') });
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -49,6 +52,7 @@ const baseConfig = {
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, './dist'),
+        clean: true,
     },
     plugins: [
         new DotenvWebpackPlugin(),
@@ -57,6 +61,10 @@ const baseConfig = {
             filename: 'index.html',
         }),
         new CleanWebpackPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.API_URL': JSON.stringify(process.env.API_URL),
+            'process.env.API_TOKEN': JSON.stringify(process.env.API_TOKEN),
+        }),
     ],
 };
 

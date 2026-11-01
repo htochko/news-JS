@@ -14,7 +14,14 @@ export default [
   
   // Recommended TypeScript rules
   ...tseslint.configs.recommended,
-  
+  {
+    ignores: [
+      "dist/",
+      "node_modules/",
+      "webpack.config.js",
+      "*.config.js"
+    ],
+  },
   // Custom rules & project configuration for TS files
   // alternative pattern 'src/**/*.{ts,tsx,js,jsx}'
   {
@@ -26,6 +33,7 @@ export default [
     },
     rules: {
       // Enforce no-explicit-any explicitly
+      '@typescript-eslint/no-explicit-any': 'warn',
       'strict': 'warn',
       // 'noImplicitAny is from tsconfig.json
     },
