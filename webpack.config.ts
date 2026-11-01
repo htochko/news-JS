@@ -66,8 +66,8 @@ export default (env: EnvOptions) => {
     // If your prod/dev configs are still JS, require works, 
     // but consider converting them to .ts as well for full type safety.
     const envConfig = isProductionMode 
-        ? prodConfig.default || prodConfig
-        : devConfig.default || devConfig;
+        ? prodConfig
+        : devConfig;
 
     return merge(baseConfig, envConfig);
 };

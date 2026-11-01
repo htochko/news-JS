@@ -12,6 +12,9 @@ export default tseslint.config(
   {
     files: ['**/*.{js,ts,tsx}'],
     rules: {
+        'strict': 'warn', 
+        'noImplicitAny': 'warn', 
+        '@typescript-eslint/no-explicit-any' : 'error',
       // You can override or add custom rules here if needed, e.g.:
       // '@typescript-eslint/no-unused-vars': 'warn',
     },
