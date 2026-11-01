@@ -1,6 +1,5 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-import * as webpack from 'webpack';
 import { merge } from 'webpack-merge';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
@@ -10,7 +9,7 @@ import 'webpack-dev-server';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const devConfig: webpack.Configuration = {
+const devConfig = {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
@@ -18,7 +17,7 @@ const devConfig: webpack.Configuration = {
     }
 };
 
-const prodConfig: webpack.Configuration =  {
+const prodConfig =  {
     mode: 'production',
     output: {
         filename: '[name].[contenthash].js',
@@ -28,7 +27,7 @@ const prodConfig: webpack.Configuration =  {
     },
 };
 
-const baseConfig: webpack.Configuration = {
+const baseConfig = {
     entry: path.resolve(__dirname, './src/index.ts'),
     mode: 'development',
     module: {
@@ -61,12 +60,7 @@ const baseConfig: webpack.Configuration = {
     ],
 };
 
-interface EnvOptions {
-    mode?: string;
-    [key: string]: string;
-}
-
-export default (env: EnvOptions) => {
+export default (env) => {
     const isProductionMode = env.mode === 'prod';
     
     // If your prod/dev configs are still JS, require works, 
