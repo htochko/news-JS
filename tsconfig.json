@@ -11,7 +11,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     // For nodejs:
-    "lib": ["esnext"],
+    "lib": ["esnext", "dom"],
     "types": ["node"],
     // and npm install -D @types/node
 
