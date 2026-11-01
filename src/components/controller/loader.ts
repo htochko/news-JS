@@ -1,5 +1,5 @@
 // src/components/controller/loader.ts
-import type { ApiStatus, HttpCallback, NewsResponse, Options } from '../../types/api.types';
+import type { HttpCallback, NewsResponse, Options } from '../../types/api.types';
 import { MethodsAllowed } from '../../types/api.types';
 
 
@@ -7,7 +7,7 @@ class Loader {
     private baseLink: string;
     private options: Options;
     
-    constructor(baseLink: string, options: {}) {
+    constructor(baseLink: string, options: Options) {
         this.baseLink = baseLink;
         this.options = options;
     }

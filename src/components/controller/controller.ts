@@ -1,5 +1,5 @@
 import AppLoader from './appLoader';
-import type { NewsResponse, Source, HttpCallback } from '../../types/api.types';
+import type { NewsResponse, HttpCallback } from '../../types/api.types';
 
 class AppController extends AppLoader {
     public getSources(callback: HttpCallback<NewsResponse>) {

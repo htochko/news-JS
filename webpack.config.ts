@@ -57,7 +57,7 @@ const baseConfig: webpack.Configuration = {
 
 interface EnvOptions {
     mode?: string;
-    [key: string]: any;
+    [key: string]: string;
 }
 
 export default (env: EnvOptions) => {

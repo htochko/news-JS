@@ -1,6 +1,6 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-import type { NewsResponse, Source, Article } from '../../types/api.types';
+import type { NewsResponse } from '../../types/api.types';
 
 class App {
     private controller: AppController;
