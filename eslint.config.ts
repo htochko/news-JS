@@ -19,7 +19,7 @@ export default [
         },
         rules: {
             strict: 'warn',
-            noexplicitAny: 'error',
+            noImplicitAny: 'error',
         },
     },
 ];
