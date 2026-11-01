@@ -1,22 +1,25 @@
-// @ts-check
+// eslint.config.js
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 
-export default tseslint.config(
-    // Include ESLint's built-in recommended rules
-    js.configs.recommended,
-
-    // Include typescript-eslint's recommended rules
-    ...tseslint.configs.recommended,
-
+export default [
     {
-        files: ['**/*.{js,ts,tsx}'],
+        ignores: ['dist/**', 'build/**'],
+    },
+    js.configs.recommended,
+    ...tseslint.configs.recommended,
+    {
+        files: ['**/*.ts', '**/*.tsx'],
+        languageOptions: {
+            parser: tseslint.parser,
+            parserOptions: {
+                project: true,
+                tsconfigRootDir: import.meta.dirname,
+            },
+        },
         rules: {
             strict: 'warn',
-            noImplicitAny: 'warn',
-            '@typescript-eslint/no-explicit-any': 'error',
-            // You can override or add custom rules here if needed, e.g.:
-            // '@typescript-eslint/no-unused-vars': 'warn',
+            noexplicitAny: 'error',
         },
-    }
-);
+    },
+];
