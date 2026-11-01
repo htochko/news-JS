@@ -20,6 +20,12 @@ const devConfig: webpack.Configuration = {
 
 const prodConfig: webpack.Configuration =  {
     mode: 'production',
+    output: {
+        filename: '[name].[contenthash].js',
+        path: path.resolve(import.meta.dirname, 'dist'),
+        clean: true,
+        publicPath: 'auto', // Ensures relative assets load properly on subpaths
+    },
 };
 
 const baseConfig: webpack.Configuration = {
