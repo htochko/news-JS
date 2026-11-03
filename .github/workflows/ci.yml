@@ -35,7 +35,7 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          API_URL: ${{ secrets.API_URL }}
+          API_URL: ${{ vars.API_URL }}
           API_KEY: ${{ secrets.API_KEY }}
       - name: Setup Pages
         uses: actions/configure-pages@v4
