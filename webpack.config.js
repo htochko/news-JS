@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url';
 import { merge } from 'webpack-merge';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import DotenvWebpackPlugin from 'dotenv-webpack';
+import Dotenv from 'dotenv-webpack';
 import 'webpack-dev-server';
 import dotenv from 'dotenv';
 import webpack from 'webpack';
@@ -55,7 +55,7 @@ const baseConfig = {
         clean: true,
     },
     plugins: [
-        new DotenvWebpackPlugin({systemvars: true}),
+        new Dotenv({systemvars: true}),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',
