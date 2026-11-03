@@ -3,12 +3,10 @@ import { fileURLToPath } from 'url';
 import { merge } from 'webpack-merge';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import Dotenv from 'dotenv-webpack';
 import 'webpack-dev-server';
-import dotenv from 'dotenv';
+import Dotenv from 'dotenv-webpack';
 import webpack from 'webpack';
 
-dotenv.config({ path: path.resolve(import.meta.dirname, '.env') });
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -55,16 +53,12 @@ const baseConfig = {
         clean: true,
     },
     plugins: [
-        new Dotenv({systemvars: true}),
+        new Dotenv({path: path.resolve(__dirname, '.env'), systemvars: true,}),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',
         }),
         new CleanWebpackPlugin(),
-        new webpack.DefinePlugin({
-            'process.env.API_URL': JSON.stringify(process.env.API_URL),
-            'process.env.API_TOKEN': JSON.stringify(process.env.API_TOKEN),
-        }),
     ],
 };
 
