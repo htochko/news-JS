@@ -1,22 +1,24 @@
-name: CI Pipeline
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main, js-to-ts]
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-on:
-  push:
-    branches: [ main, master, js-to-ts ]
-  pull_request:
-    branches: [ main, master, js-to-ts ]
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
 
 jobs:
-  build-and-lint:
-    runs-on: ubuntu-latest
+  deploy:
     environment:
       name: github-pages
-
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -43,4 +45,4 @@ jobs:
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4    
+        uses: actions/deploy-pages@v4
